@@ -15,7 +15,8 @@ header b{font-size:18px;font-weight:600;display:block}header small{color:var(--m
 .tabs{display:flex;gap:6px;padding:8px 16px;max-width:980px;margin:auto;overflow-x:auto}
 .tabs button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--mut);padding:8px 14px;border-radius:999px;font:inherit;cursor:pointer}
 .tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-main{max-width:980px;margin:auto;padding:8px 16px 110px}
+main{max-width:980px;margin:auto;padding:8px 16px 16px}
+.lg{max-width:980px;margin:auto;padding:8px 16px 110px;font-size:13px;color:var(--mut);display:flex;gap:14px}.lg a{color:var(--mut)}.lg a:hover{color:var(--ac)}
 h1{font-size:24px;margin:0;font-weight:600}h2{font-size:17px;margin:0;font-weight:600}h3{font-size:14px;margin:16px 0 6px;color:var(--mut);font-weight:500}
 .sub{color:var(--mut);margin:2px 0}.hd{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:12px 0}
 .pill{background:var(--acs);color:var(--ac);padding:4px 10px;border-radius:999px;font-size:13px}
@@ -67,6 +68,7 @@ input[type=checkbox]:checked{background:var(--ok);border-color:var(--ok)}input[t
 </style></head><body>
 <header><div><b>Taskboard</b><small id="now"></small></div><div><button class="ib" data-g id="gbtn">Sign in with Google</button><button class="ib" data-tab="projects">Projects</button><button class="ib" data-bell aria-label="Notifications">🔔<em id="bd"></em></button></div></header>
 <nav class="tabs" id="tabs"></nav><main id="main"></main>
+<footer class="lg"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></footer>
 <button class="fab" data-add="ctx">+ Add New</button>
 <div class="mo" id="mo" hidden><div class="sheet" id="sheet"></div></div>
 <script>
