@@ -204,14 +204,14 @@ document.addEventListener('drop',e=>{const c=e.target.closest&&e.target.closest(
  k.date=c.dataset.date;k.carried=false;if(c.dataset.hour!==undefined)k.alert=pad(c.dataset.hour)+':'+(k.alert?k.alert.slice(3):'00');save();render()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 /* ---------- Google sign-in + Drive sync (private app data folder) ---------- */
-const GOOGLE_CLIENT_ID='PASTE_YOUR_CLIENT_ID.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID='342841172088-g4qfbvep6s8nf22n5arr7kabkk78vi7l.apps.googleusercontent.com';
 const SCOPE='https://www.googleapis.com/auth/drive.appdata';
 let tok=null,tokExp=0,fileId=null,syncT=null,gstate='out',tc=null;
 const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},lsSet=(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}};
 const dr=(p,o={})=>fetch('https://www.googleapis.com'+p,{...o,headers:{Authorization:'Bearer '+tok,...(o.headers||{})}}).then(r=>{if(!r.ok)throw new Error(r.status);return r});
 function gSign(){if(GOOGLE_CLIENT_ID.startsWith('PASTE'))return toast('Add your Google Client ID at the top of the Google section in this file.');
  if(!window.google||!google.accounts)return toast('Google sign-in is loading or blocked. Check your connection and try again.');
- tc=tc||google.accounts.oauth2.initTokenClient({client_id:342841172088-g4qfbvep6s8nf22n5arr7kabkk78vi7l.apps.googleusercontent.com,scope:SCOPE,callback:r=>{if(r.error){gstate='err';toast('Google sign-in was cancelled or failed.');return render()}
+ tc=tc||google.accounts.oauth2.initTokenClient({client_id:GOOGLE_CLIENT_ID,scope:SCOPE,callback:r=>{if(r.error){gstate='err';toast('Google sign-in was cancelled or failed.');return render()}
   tok=r.access_token;tokExp=Date.now()+(r.expires_in-60)*1000;lsSet('tb.g','1');pull()},error_callback:()=>{gstate='out';render()}});
  tc.requestAccessToken({prompt:lsGet('tb.g')?'':'consent'})}
 function gOut(){try{google.accounts.oauth2.revoke(tok)}catch(e){}tok=null;fileId=null;lsSet('tb.g',null);gstate='out';render()}
